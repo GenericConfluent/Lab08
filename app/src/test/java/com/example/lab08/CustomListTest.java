@@ -19,4 +19,39 @@ public class CustomListTest {
         assert !customList.hasCity(vancouver);
         assert !customList.hasCity(toronto);
     }
+
+    @Test
+    public void testDeleteCity() {
+        CustomList customList = new CustomList();
+        City edmonton = new City("Edmonton", "AB");
+        City calgary = new City("Calgary", "AB");
+        City vancouver = new City("Vancouver", "BC");
+        City toronto = new City("Toronto", "ON");
+
+        customList.addCity(edmonton);
+        customList.addCity(calgary);
+        customList.deleteCity(edmonton);
+        customList.addCity(vancouver);
+
+        assert !customList.hasCity(edmonton);
+        assert customList.hasCity(calgary);
+        assert customList.hasCity(vancouver);
+        assert !customList.hasCity(toronto);
+    }
+
+    @Test
+    public void testCountCity() {
+        CustomList customList = new CustomList();
+        City edmonton = new City("Edmonton", "AB");
+        City calgary = new City("Calgary", "AB");
+        City vancouver = new City("Vancouver", "BC");
+        City toronto = new City("Toronto", "ON");
+
+        customList.addCity(edmonton);
+        customList.addCity(calgary);
+        customList.deleteCity(edmonton);
+        customList.addCity(vancouver);
+
+        assert customList.countCities() == 2;
+    }
 }
